@@ -15,15 +15,19 @@ A squid stuck in a shipping container.
 
 ### Build
 
-    $ docker build -t flaccid/squid .
+    $ make
+
+### Build and Push to Docker Hub
+
+This is usually not required as the repository is an automated build.
+
+    $ make release
 
 ### Run
 
-    $ docker run -it flaccid/squid
-
-### Push to Docker Hub
-
-    $ docker push flaccid/squid
+    $ docker run -itd \
+        -p 3128:3128 \
+          flaccid/squid
 
 License and Authors
 -------------------
