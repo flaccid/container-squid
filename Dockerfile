@@ -1,4 +1,4 @@
-FROM nginx:1-alpine
+FROM alpine
 
 MAINTAINER Chris Fordham <chris@fordham-nagy.id.au>
 
