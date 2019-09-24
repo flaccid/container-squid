@@ -1,10 +1,8 @@
 FROM alpine
 
-MAINTAINER Chris Fordham <chris@fordham-nagy.id.au>
+MAINTAINER Chris Fordham <chris@fordham.id.au>
 
-RUN apk update && \
-  apk add --no-cache --upgrade squid && \
-  rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache --update squid
 
 VOLUME /etc/squid
 VOLUME /var/cache/squid
