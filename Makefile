@@ -10,17 +10,20 @@ WORKING_DIR := $(shell pwd)
 
 .PHONY: build push
 
-release:: build push ## Builds and pushes the docker image to the registry
+docker-release:: docker-build docker-test docker-push ## Builds and pushes the docker image to the registry
 
-push:: ## Pushes the docker image to the registry
+docker-push:: ## Pushes the docker image to the registry
 		@docker push $(IMAGE_TAG)
 
-build:: ## Builds the docker image locally
+docker-build:: ## builds the docker image locally
 		@echo http_proxy=$(HTTP_PROXY) http_proxy=$(HTTPS_PROXY)
 		@docker build --pull \
 		--build-arg=http_proxy=$HTTP_PROXY \
 		--build-arg=https_proxy=$HTTPS_PROXY \
 		-t $(IMAGE_TAG) $(WORKING_DIR)
+
+docker-test:: ## tests the runtime of the docker image in a basic sense
+	@docker run $(IMAGE_TAG) squid --version
 
 # A help target including self-documenting targets (see the awk statement)
 define HELP_TEXT
