@@ -4,12 +4,17 @@
 [![GitHub Issues][badge-gh-issues]][gh-issues]
 [![GitHub Stars][badge-gh-stars]][gh-stars]
 [![GitHub Forks][badge-gh-forks]][gh-forks]
-[![Docker Build][badge-docker-build]][docker-builds]
-[![Docker Build Status][badge-docker-build-status]][docker-builds]
 [![Docker Pulls][badge-docker-pulls]][docker-hub]
 [![Twitter][badge-twitter]][tweet]
 
 A squid stuck in a shipping container.
+
+The intention of this image:
+
+- official `squid` package on Alpine Linux
+- no default configuration other than what is provided by the OS package
+- no re-configuration on Docker `ENTRYPOINT`
+- configuration is left to the user and technology, e.g. Kubernetes
 
 ## Usage
 
@@ -53,14 +58,11 @@ limitations under the License.
 [badge-gh-issues]: https://img.shields.io/github/issues/flaccid/docker-squid.svg
 [badge-gh-forks]: https://img.shields.io/github/forks/flaccid/docker-squid.svg
 [badge-gh-stars]: https://img.shields.io/github/stars/flaccid/docker-squid.svg
-[badge-docker-build]: https://img.shields.io/docker/automated/flaccid/squid.svg
-[badge-docker-build-status]: https://img.shields.io/docker/build/flaccid/squid.svg
 [badge-docker-pulls]: https://img.shields.io/docker/pulls/flaccid/squid.svg
 [badge-twitter]: https://img.shields.io/twitter/url/https/github.com/flaccid/docker-squid.svg?style=social
 [gh-issues]: https://github.com/flaccid/docker-squid/issues
 [gh-stars]: https://github.com/flaccid/docker-squid/stargazers
 [gh-forks]: https://github.com/flaccid/docker-squid/network
-[docker-builds]: https://hub.docker.com/r/flaccid/squid/builds/
 [docker-hub]: https://registry.hub.docker.com/u/flaccid/squid/
 [apache2]: https://www.apache.org/licenses/LICENSE-2.0
 [tweet]: https://twitter.com/intent/tweet?text=check%20out%20https://goo.gl/KS5vis&url=%5Bobject%20Object%5D
