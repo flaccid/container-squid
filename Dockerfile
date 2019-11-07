@@ -8,8 +8,8 @@ VOLUME /etc/squid
 VOLUME /var/cache/squid
 VOLUME /var/log/squid
 
-RUN ln -sf /dev/stdout /var/log/squid/access.log
-RUN ln -sf /dev/stdout /var/log/squid/cache.log
+RUN touch /var/run/squid.pid && \
+    chown squid:squid /var/run/squid.pid
 
 EXPOSE 3128
 

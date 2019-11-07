@@ -26,7 +26,7 @@ The intention of this image:
 
 This is usually not required as the repository is an automated build.
 
-    $ make release
+    $ make docker-release
 
 ### Run
 
