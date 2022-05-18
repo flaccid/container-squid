@@ -1,4 +1,4 @@
-# docker-squid
+# container-squid
 
 [![License][badge-license]][apache2]
 [![GitHub Issues][badge-gh-issues]][gh-issues]
@@ -9,11 +9,13 @@
 
 A squid stuck in a shipping container.
 
-The intention of this image:
+The intention of this repo:
 
-- official `squid` package on Alpine Linux
+- container image for squid
+- helm chart for squid
+- use the official `squid` package on Alpine Linux
 - no default configuration other than what is provided by the OS package
-- no re-configuration on Docker `ENTRYPOINT`
+- no re-configuration on Docker `ENTRYPOINT` (k8s equiv. etc.)
 - configuration is left to the user and technology, e.g. Kubernetes
 
 ## Usage
