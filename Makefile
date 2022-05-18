@@ -22,8 +22,44 @@ docker-build:: ## builds the docker image locally
 		--build-arg=https_proxy=$HTTPS_PROXY \
 		-t $(IMAGE_TAG) $(WORKING_DIR)
 
+docker-run:: ## Pushes the docker image to the registry
+		@docker run -it -p 3128:3128 $(IMAGE_TAG)
+
 docker-test:: ## tests the runtime of the docker image in a basic sense
-	@docker run $(IMAGE_TAG) squid --version
+		@docker run $(IMAGE_TAG) squid --version
+
+helm-install:: ## installs using helm from chart in repo
+		@helm install \
+			-f helm-values.yaml \
+			--namespace $(KUBE_NAMESPACE) \
+				squid charts/squid
+
+helm-upgrade:: ## upgrades deployed helm release
+		@helm upgrade \
+			-f helm-values.yaml \
+			--namespace $(KUBE_NAMESPACE) \
+				squid charts/squid
+
+helm-uninstall:: ## deletes and purges deployed helm release
+		@helm uninstall \
+			--namespace $(KUBE_NAMESPACE) \
+				squid
+
+helm-reinstall:: helm-uninstall helm-install ## Uninstalls the helm release, then installs it again
+
+helm-render:: ## prints out the rendered chart
+		@helm install \
+			-f helm-values.yaml \
+			--namespace $(KUBE_NAMESPACE) \
+			--dry-run \
+			--debug \
+				squid charts/squid
+
+helm-validate:: ## runs a lint on the helm chart
+		@helm lint \
+			-f helm-values.yaml \
+			--namespace $(KUBE_NAMESPACE) \
+				charts/squid
 
 # A help target including self-documenting targets (see the awk statement)
 define HELP_TEXT
